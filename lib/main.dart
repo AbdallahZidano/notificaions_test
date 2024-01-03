@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -71,6 +72,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String fcmToken = "";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Firebase.initializeApp().then((value) {
+      FirebaseMessaging.instance.getToken().then((value) {
+        setState(() {
+          fcmToken = value ?? "";
+        });
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,12 +94,23 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            const Text(
+              "Your FCM Token is",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Text(fcmToken),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Clipboard.setData(ClipboardData(text: fcmToken));
+              },
+              child: const Text("Copy FCM"),
             ),
           ],
         ),
