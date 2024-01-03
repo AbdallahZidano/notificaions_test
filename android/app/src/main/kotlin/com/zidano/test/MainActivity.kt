@@ -1,4 +1,4 @@
-package com.example.notificaions_test
+package com.zidano.test
 
 import io.flutter.embedding.android.FlutterActivity
 

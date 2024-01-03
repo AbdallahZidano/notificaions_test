@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "545649408724",
+    "project_id": "test-notifications-1a1e0",
+    "storage_bucket": "test-notifications-1a1e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545649408724:android:98f453b6a79dd573a8d941",
+        "android_client_info": {
+          "package_name": "com.zidano.test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpRd-4bHWTSRUggvOONlbEx72wUz7IUno"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
